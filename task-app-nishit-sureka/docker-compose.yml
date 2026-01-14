@@ -1,0 +1,47 @@
+services:
+  app:
+    image: php:8.1-fpm
+    container_name: task-app
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - tasknet
+    ports:
+      - "8000:8000"
+
+  web:
+    image: nginx:alpine
+    container_name: task-web
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - tasknet
+
+  db:
+    image: mysql:8
+    container_name: task-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: task_management_app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - tasknet
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
+
+networks:
+  tasknet:
