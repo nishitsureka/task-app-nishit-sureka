@@ -1,19 +1,18 @@
 ## Setup
-composer install
-php artisan db:seed
-php artisan serve
+1. composer install,
+2. php artisan db:seed,
+3. php artisan serve
 
-# NPm
-npm install
-npm install vue@3
-npm install @vitejs/plugin-vue --save-dev
-npm run dev
+## NPm
+1. npm install vue@3,
+2. npm install @vitejs/plugin-vue --save-dev,
+3. npm run dev
 
 ## Run Tests
-php artisan test
+1. php artisan test
 
 ## API Endpoints
-GET /api/tasks
-POST /api/tasks
-PUT /api/tasks/{id}
-DELETE /api/tasks/{id}
+1. GET /api/tasks,
+2. POST /api/tasks,
+3. PUT /api/tasks/{id},
+4. DELETE /api/tasks/{id}
